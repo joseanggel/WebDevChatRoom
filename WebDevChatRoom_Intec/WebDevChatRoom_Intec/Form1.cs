@@ -5,6 +5,7 @@
     using System.Net.Sockets;
     using System.Text;
     using Newtonsoft.Json;
+    using System.IO;
 
     public partial class Form1 : Form
     {
@@ -65,6 +66,16 @@
             serverStream.Read(inStream, 0, (int) clientSocket.ReceiveBufferSize);
             string returndata = System.Text.Encoding.ASCII.GetString(inStream);
             msg(String.Format(">>{0}: {1}", Username, returndata));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            clientSocket.GetStream().Close();
+            msg("Client - Server Disconnected ...");       
+
+
         }
     }
 }
